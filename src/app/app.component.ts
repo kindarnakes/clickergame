@@ -7,4 +7,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'clickerGame';
+  initClicked:boolean = false;
+  named:boolean = false;
+
+  constructor(){}
+
+
+  initClick():void{
+    this.initClicked = true;
+  }
+
+
+
+
 }

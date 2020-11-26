@@ -1,0 +1,39 @@
+
+<div class="progress">
+    <div class="progress-bar bg-info" role="progressbar" [style.width]="this.match.blue_points+'%'" [attr.aria-valuenow]="this.match.blue_points" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<div class="progress">
+    <div class="progress-bar bg-danger" role="progressbar" [style.width]="this.match.red_points+'%'"  [attr.aria-valuenow]="this.match.red_points" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+
+<div style="margin: 4em;">
+    <button class="btn btn-primary" *ngIf="this.start && this.game.isBlue()" (click)="blueClick()">Pulsame rápido</button>
+    <button class="btn btn-danger" *ngIf="this.start&& this.game.isRed()" (click)="redClick()">Pulsame rápido</button>
+    <button *ngIf="!this.start && !creator" class="btn btn-warning">{{textButton}}</button>
+    <button *ngIf="!this.start && creator" class="btn btn-warning" (click)="startClick()">Empezar</button>
+    <p *ngIf="!this.start && creator">Codigo de Sala: <br/>{{this.match.key}}</p>
+
+</div>
+
+<table class="table table-bordered table-striped tabla">
+    <tr>
+        <td class="blue">Equipo azul</td>
+        <td class="red">Equipo rojo</td>
+    </tr>
+    <tr>
+        <td class="blue">
+            <ul>
+            <li *ngFor="let member of this.match.blue_members">
+                {{member.name}}
+            </li>
+            </ul>
+        </td>
+        <td class="red">
+            <ul>
+            <li *ngFor="let member of this.match.red_members">
+                {{member.name}}
+            </li>
+            </ul>
+        </td>
+    </tr>
+</table>

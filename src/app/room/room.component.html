@@ -1,0 +1,32 @@
+<button type="button" class="btn btn-warning" *ngIf="!chooseCreate && !chooseJoin" (click)="create()">Crear Partida</button>
+<button type="button" class="btn btn-warning" *ngIf="!chooseCreate && !chooseJoin" (click)="join()">Unirse a un juego juego</button>
+
+<form [formGroup]="nameForm" *ngIf="chooseCreate || chooseJoin">
+    <label for="name">Nombre&nbsp;</label>
+    <input type="text" class="form-control" id="name" formControlName="name">
+    <p class="alert alert-danger" *ngIf="nameForm.controls.name.invalid &&
+    nameForm.controls.name.touched">
+        ¡Seguro que tienes nombre!
+    </p>
+
+
+    <label for="room" *ngIf="chooseJoin">Sala&nbsp;</label>
+    <input type="text" class="form-control" id="name" formControlName="room" *ngIf="chooseJoin">
+    <p class="alert alert-danger" *ngIf="nameForm.controls.room.invalid &&
+    nameForm.controls.room.touched && chooseJoin">
+        ¡Tienes que introducir la sala!
+    </p>
+
+
+    <button type="submit" class="btn btn-danger" *ngIf="nameForm.controls.name.valid && (chooseCreate || nameForm.controls.room.valid)"
+                    (click)="this.onSubmitRed()">Rojo</button>    
+
+    <button type="submit" class="btn btn-primary" *ngIf="nameForm.controls.name.valid && (chooseCreate || nameForm.controls.room.valid)"
+                    (click)="this.onSubmitBlue()">Azul</button>
+    
+    <button type="submit" class="btn btn-danger" *ngIf="nameForm.controls.name.invalid || (nameForm.controls.room.invalid && chooseJoin)">
+        Rojo</button>    
+
+    <button type="submit" class="btn btn-primary" *ngIf="nameForm.controls.name.invalid || (nameForm.controls.room.invalid && chooseJoin)">
+        Azul</button>
+</form>

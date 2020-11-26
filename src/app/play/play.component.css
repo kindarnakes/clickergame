@@ -1,0 +1,13 @@
+li{
+    list-style-type: none;
+}
+
+.red{
+    background-color: red;
+    color: white;
+}
+
+.blue{
+    background-color: blue;
+    color: white;
+}
